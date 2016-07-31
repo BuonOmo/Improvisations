@@ -1,0 +1,5 @@
+language: java
+jdk:
+    - openjdk8
+#install: (cd src/main/webapp && bower install)
+#script: mvn test
