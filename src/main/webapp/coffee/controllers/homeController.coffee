@@ -8,12 +8,6 @@ document.app.controller 'homeController', [ 'improvisationService', '$scope', (i
   $scope.all = ->
     improvisationService.all()
      .success (data) ->
-        # Convert seconds to readable time
-#        data.map (element) ->
-#          element.duration =
-#            moment 0
-#            .second element.duration
-#            .format 'm:ss'
         $scope.improvisations = data
       .error (data) ->
         console.log data
@@ -27,11 +21,14 @@ document.app.controller 'homeController', [ 'improvisationService', '$scope', (i
     fields = [ 'theme', 'category', 'playerNumber', 'type', 'niceDuration' ]
     values = fields
       .map (element,index) ->
-        row[index].textContent
+        row[index].textContent.trim()
+    console.log values
+    return "No values" if !values.find (e) ->
+      e != null && e != ""
     # convert fields to json object
     improvisation= if typeof id == 'number' then 'id': id else {} # Create or update, if there is an id set
     for i in [0..fields.length]
-      improvisation[fields[i]] = values[i] if values[i]
+      improvisation[fields[i]] = values[i] if values[i] && values[i]
     # POST to the server
     improvisationService.save improvisation
       .success (data) ->
@@ -46,8 +43,7 @@ document.app.controller 'homeController', [ 'improvisationService', '$scope', (i
           $scope.improvisations
             .find (element) -> element.id == data.id
             .category.description = data.category.description
-            .saved = true #todo: correct this
-    return
+    return "Done"
 
   ###
     Delete an improvisation using its id

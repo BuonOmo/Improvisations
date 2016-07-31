@@ -30,13 +30,18 @@ public class ImprovisationController {
 
     @RequestMapping(path = "", method = POST)
     public Improvisation save(@RequestBody Improvisation i) {
-        System.err.println(i.toString());
-        List<Category> cat = categoryRepository.findByName(i.getCategory().getName());
-        if (cat == null || cat.size() == 0)
-            categoryRepository.save(i.getCategory());
-        else
-            i.setCategory(cat.get(0));
-        System.err.print(i.toString());
+        System.err.println(i);
+        Category found = categoryRepository.findByName(i.getCategory().getName());
+        if (found == null) {
+            Category cat = i.getCategory();
+            if (cat != null && cat.getName() != null && !cat.getName().equals("") )
+                categoryRepository.save(i.getCategory());
+            else
+                i.setCategory(null);
+        } else {
+            i.setCategory(found);
+        }
+        System.err.print(i);
         improvisationRepository.save(i);
         return i;
     }

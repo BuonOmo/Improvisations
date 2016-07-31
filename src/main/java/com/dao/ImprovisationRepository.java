@@ -7,5 +7,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ImprovisationRepository extends JpaRepository<Improvisation, Long> {
 
-    ImprovisationRepository findByTheme(String theme);
 }
