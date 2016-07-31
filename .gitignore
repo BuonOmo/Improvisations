@@ -1,0 +1,19 @@
+# IDE
+.idea/**
+SpringImpros.iml
+
+# Maven
+.mvn/**
+mvnw
+mvnw.cmd
+target/**
+
+# Bower
+src/main/webapp/bower_components/**
+
+# Compiled js
+src/main/webapp/js/**
+
+# Unused
+src/test/**
+

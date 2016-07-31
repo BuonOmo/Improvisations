@@ -1,0 +1,50 @@
+.main-container {
+    margin-top: 4px;
+}
+
+
+/* ----------------------------------------------------- *\
+    $Table $content $columns
+\* ----------------------------------------------------- */
+.col-category {
+    width: 30ex;
+}
+.col-player-number {
+    width: 20ex;
+}
+.col-type {
+    width: 8ex;
+}
+.col-duration {
+    width: 5ex;
+}
+.col-action {
+    width: 2em;
+}
+
+
+
+/* ----------------------------------------------------- *\
+    $Table $content $rows
+\* ----------------------------------------------------- */
+tr {
+    transition: width 2s;
+}
+
+
+/* ----------------------------------------------------- *\
+    $Table $content $cells
+\* ----------------------------------------------------- */
+.has-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ----------------------------------------------------- *\
+    $Miscellaneous
+\* ----------------------------------------------------- */
+.saved {
+    transition: backgound 1s;
+    background-color: springgreen;
+}
