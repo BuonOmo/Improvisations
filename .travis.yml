@@ -1,6 +1,6 @@
 language: java
 #jdk:
 #    - openjdk7
-#sudo: required
+sudo: required
 #install: (cd src/main/webapp && bower install)
 #script: mvn test
